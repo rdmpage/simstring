@@ -11,7 +11,7 @@ dnl ------------------------------------------------------------------
 dnl Initialization for autoconf
 dnl ------------------------------------------------------------------
 AC_PREREQ(2.59)
-AC_INIT
+AC_INIT([simstring], [1.1])
 AC_CONFIG_SRCDIR([frontend/main.cpp])
 
 
@@ -19,16 +19,13 @@ dnl ------------------------------------------------------------------
 dnl Checks for system
 dnl ------------------------------------------------------------------
 AC_CANONICAL_HOST
-AC_AIX
-AC_GNU_SOURCE
-AC_ISC_POSIX
-AC_MINIX
+AC_USE_SYSTEM_EXTENSIONS
 
 
 dnl ------------------------------------------------------------------
 dnl Initialization for automake
 dnl ------------------------------------------------------------------
-AM_INIT_AUTOMAKE(simstring, 1.1)
+AM_INIT_AUTOMAKE([foreign])
 AC_CONFIG_HEADERS(config.h)
 AM_MAINTAINER_MODE
 
@@ -46,14 +43,12 @@ dnl Initialization for variables
 dnl ------------------------------------------------------------------
 CXXFLAGS="${ac_save_CXXFLAGS}"
 LDFLAGS="${ac_save_LDFLAGS}"
-INCLUDES="${ac_save_INCLUDES}"
+AM_CPPFLAGS="${ac_save_AM_CPPFLAGS}"
 
 dnl ------------------------------------------------------------------
 dnl Checks for header files.
 dnl ------------------------------------------------------------------
-AC_HEADER_STDC
-AC_CHECK_HEADERS(stdint.h)
-AC_CHECK_HEADERS(sys/mman.h)
+AC_CHECK_HEADERS([stdint.h stdlib.h string.h sys/mman.h])
 
 
 dnl ------------------------------------------------------------------
@@ -100,14 +95,14 @@ dnl Check for math library
 AC_CHECK_LIB(m, sqrt)
 AC_CHECK_LIB(mmap, mmap)
 
-INCLUDES="-I\$(top_srcdir) -I\$(top_srcdir)/include"
+AM_CPPFLAGS="-I\$(top_srcdir) -I\$(top_srcdir)/include"
 
 dnl ------------------------------------------------------------------
 dnl Export variables
 dnl ------------------------------------------------------------------
 AC_SUBST(CXXFLAGS)
 AC_SUBST(LDFLAGS)
-AC_SUBST(INCLUDES)
+AC_SUBST(AM_CPPFLAGS)
 
 dnl ------------------------------------------------------------------
 dnl Output the configure results.

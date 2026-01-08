@@ -7,5 +7,5 @@ sample_SOURCES = sample.cpp
 sample_unicode_SOURCES = sample_unicode.cpp
 
 AM_CXXFLAGS = @CXXFLAGS@
-INCLUDES = @INCLUDES@
+AM_CPPFLAGS = @AM_CPPFLAGS@
 AM_LDFLAGS = @LDFLAGS@
