@@ -23,3 +23,9 @@ swig/perl/Makefile.PL
 swig/python/setup.py
 swig/ruby/extconf.rb
 aclocal.m4
+frontend/main.o
+frontend/simstring
+sample/sample.o
+sample/sample
+sample/sample_unicode
+sample/sample_unicode.o
