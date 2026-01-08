@@ -77,9 +77,13 @@ enum {
  *
  *  @author Austin Appleby
  */
-class murmurhash2 :
-    public std::binary_function<const void *, size_t, uint32_t>
+class murmurhash2
 {
+public:
+    typedef const void* first_argument_type;
+    typedef size_t second_argument_type;
+    typedef uint32_t result_type;
+
 protected:
     inline static uint32_t get32bits(const char *d)
     {
